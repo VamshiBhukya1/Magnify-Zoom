@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Zoom & Lightbox</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            margin-bottom: 20px;
+        }
+        .controls {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            padding: 20px;
+        }
+        .image-container {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+        }
+        .main-image {
+            width: 100%;
+            height: auto;
+            max-width: 400px;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            border-radius: 10px;
+        }
+        .image-container:hover .main-image {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Explore Stunning Visuals</h1>
+        <p>Hover over images to zoom in, or click to view in fullscreen.</p>
+    </header>
+    
+    <div class="controls">
+        <label for="zoom">Zoom Level:</label>
+        <input type="range" id="zoom" min="1" max="3" step="0.1" value="2">
+
+        <label for="shape">Lens Shape:</label>
+        <select id="shape">
+            <option value="circle">Circle</option>
+            <option value="square">Square</option>
+        </select>
+    </div>
+
+    <div class="image-gallery">
+        <div class="image-container">
+            <img class="main-image" src="world-political-maps.webp" alt="World Map">
+            <div class="magnifier circle"></div>
+        </div>
+        <div class="image-container">
+            <img class="main-image" src="360_F_939187992_fYYCdNky3YrNoJUkcsgggiK2LNQNDIOM.webp" alt="Nature Landscape">
+            <div class="magnifier circle"></div>
+        </div>
+        <div class="image-container">
+            <img class="main-image" src="undefined.jpg" alt="City Skyline">
+            <div class="magnifier circle"></div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" class="lightbox-image">
+            <div id="lightbox-magnifier" class="magnifier circle"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
